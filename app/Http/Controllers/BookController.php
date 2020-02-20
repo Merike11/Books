@@ -11,7 +11,11 @@ class BookController extends Controller
         return "test";
     }
     public function books($year){
-        $books = Book::where('release_date',$year)-> get();
+        $books = Book::where('release_date', '>=', $year)
+            ->where('type', 'new')
+            ->orderBy('title')
+            ->with('orders')
+            -> get(['id', 'title', 'release_date', 'price', 'type']);
 
         return $books;
     }

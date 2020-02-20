@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', 'BookController@index');
 Route::get('/books', 'BookController@books');
 Route::get('/books/{year}', 'BookController@books');
+Route::get('/authors', 'AuthorController@authors');
+Route::get('/orders', 'OrderController@orders');
 
 /*Route::get('/', function () {
     $books = DB::select('SELECT * FROM books');
