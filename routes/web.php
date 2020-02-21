@@ -12,13 +12,24 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'BookController@index');
+Route::get('/', 'BlogController@index');
+Route::get('/new', 'BlogController@create');
+
+
+
+
+
+
+
+
+/*
+Route::get('/', 'BookController@usedBooksReleaseYearByPrice');
 Route::get('/books', 'BookController@books');
 Route::get('/books/{year}', 'BookController@books');
 Route::get('/authors', 'AuthorController@authors');
 Route::get('/orders', 'OrderController@orders');
 Route::get('/clients', 'ClientController@clients');
-
+*/
 /*Route::get('/', function () {
     $books = DB::select('SELECT * FROM books');
     dd($books);
@@ -26,13 +37,16 @@ Route::get('/clients', 'ClientController@clients');
 });
 
 Route::get('/', function () {
-    $books = DB::select('SELECT * FROM books WHERE release_date >= 2010 AND type = "new" ORDER BY title;');
+    $books = DB::select('SELECT * FROM books 
+    WHERE release_date >= 2010 AND type = "new" 
+    ORDER BY title;');
     dd($books);
     return view('form');
 });
 
 Route::get('/', function () {
-    $books = DB::select('SELECT title, release_date, price, "type" FROM books WHERE release_date < 1970 
+    $books = DB::select('SELECT title, release_date, price, "type" 
+    FROM books WHERE release_date < 1970 
     AND type = "used" AND price < 20;');
     dd($books);
     return view('form');
